@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\admin;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\guard;
+
+// use Illuminate\Support\Facades\guard;
 use Session;
 
 
@@ -34,22 +35,21 @@ class adminController extends Controller
 
         if(Auth::guard('admin')->attempt($data))
         {
-
-            echo "Login Successfully";
-
-            // return redirect('/admin');
-        }
-        else
-        {
-            return back()->with('error','Invalid Username or Password');
+            return redirect('admin/dashboard');
+        }else{
+            return redirect()->back()->withError(['message'=>'Invalid Username or Password']);
         }
 
-        // $admin = admin::where('username', $request->username)->where('password', $request->password)->get()->toArray();
-        // if($admin){
-        //     echo "Login Success";
-        // }
-        // else{
-        //     echo "Login Failed";
-        // }
+      }
+
+    public function dashboard()
+    {
+        return view('admin.dashboard');
     }
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('admin');
+    }
+
 }

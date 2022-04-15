@@ -204,22 +204,22 @@
                         <nav>
                             <ul>
                                 <li><a href="{{ url('/home') }}">home<i class="fa fa-angle-down"></i></a>
-                                    <ul class="sub_menu">
-                                        <li><a href="{{ url('/home') }}">Home 1</a></li>
+                                    {{-- <ul class="sub_menu"> --}}
+                                    {{-- <li><a href="{{ url('/home') }}">Home 1</a></li>
                                         <li><a href="index-2.html">Home 2</a></li>
                                         <li><a href="index-3.html">Home 3</a></li>
                                         <li><a href="index-4.html">Home 4</a></li>
                                         <li><a href="index-5.html">Home 5</a></li>
-                                        <li><a href="index-6.html">Home 6</a></li>
-                                        <li class="home7new"><a href="index-7.html">Home 7</a><span>new</span>
-                                        </li>
-                                    </ul>
+                                        <li><a href="index-6.html">Home 6</a></li> --}}
+                                    {{-- <li class="home7new"><a href="index-7.html">Home 7</a><span>new</span>
+                                        </li> --}}
+                                    {{-- </ul> --}}
                                 </li>
-                                <li class="mega_items"><a href="{{ url('/shop') }}">shop<i
-                                            class="fa fa-angle-down"></i></a>
-                                    <div class="mega_menu">
-                                        <ul class="mega_menu_inner">
-                                            <li><a href="#">Shop Layouts</a>
+                                <li class="mega_items"><a href="{{ url('/shop') }}">shop
+                                        <i class="fa fa-angle-down"></i></a>
+                                    {{-- <div class="mega_menu"> --}}
+                                    {{-- <ul class="mega_menu_inner"> --}}
+                                    {{-- <li><a href="#">Shop Layouts</a>
                                                 <ul>
                                                     <li><a href="shop-fullwidth.html">Full Width</a></li>
                                                     <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
@@ -257,12 +257,12 @@
                                                     <li><a href="shop-right-sidebar.html">Optical Drives</a></li>
 
                                                 </ul>
-                                            </li>
-                                        </ul>
-                                        <div class="banner_static_menu">
+                                            </li> --}}
+                                    {{-- </ul> --}}
+                                    {{-- <div class="banner_static_menu">
                                             <a href="shop.html"><img src="assets/img/bg/banner1.jpg" alt=""></a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </li>
                                 <li><a href="{{ url('/blog') }}">blog<i class="fa fa-angle-down"></i></a>
                                     {{-- <ul class="sub_menu pages">
@@ -271,7 +271,7 @@
                                             <li><a href="blog-sidebar.html">blog sidebar</a></li>
                                         </ul> --}}
                                 </li>
-                                <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
+                                {{-- <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub_menu pages">
                                         <li><a href="{{ url('/about') }}">About Us</a></li>
                                         <li><a href="services.html">services</a></li>
@@ -281,7 +281,7 @@
                                         <li><a href="privacy-policy.html">privacy policy</a></li>
                                         <li><a href="coming-soon.html">Coming Soon</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li><a href="{{ url('/about') }}">about Us</a></li>
                                 <li><a href="{{ url('/contact') }}"> Contact Us</a></li>
                             </ul>

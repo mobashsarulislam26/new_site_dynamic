@@ -1,18 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BaseController extends Controller
 {
      public function home()
     {
-        return view('home');
+        $category= Category::all();
+        $products = Product::paginate(50);
+
+        return view('home', compact('products','category'));
     }
     public function shop()
     {
-     return view('shop');
+         $products = Product::paginate(50);
+        return view('Shop', compact('products'));
+    //  return view('shop');
     }
     public function blog()
     {
@@ -30,4 +36,9 @@ class BaseController extends Controller
     {
         return view('contact');
     }
+    public function productDetails()
+    {
+        return view('productDetails');
+    }
+
 }

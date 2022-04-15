@@ -1,4 +1,3 @@
-
 @extends('master')
 @section('content')
 
@@ -13,43 +12,38 @@
                             <div class="categories_title">
                                 <h2 class="categori_toggle">Browse categories</h2>
                             </div>
-                            <div class="categories_menu_toggle">
-                                <ul>
-                                    <li class="menu_item_children categorie_list"><a href="#">Brake Parts <i
-                                                class="fa fa-angle-right"></i></a>
-                                        <ul class="categories_mega_menu">
-                                            <li class="menu_item_children"><a href="#">Wheel Bearings</a>
-                                                <ul class="categorie_sub_menu">
-                                                    <li><a href="#">Bower</a></li>
-                                                    <li><a href="#">Flipbac</a></li>
-                                                    <li><a href="#">Gary Fong</a></li>
-                                                    <li><a href="#">GigaPan</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu_item_children"><a href="#">Wheel Rim Screws</a>
-                                                <ul class="categorie_sub_menu">
-                                                    <li><a href="#">Accessories</a></li>
-                                                    <li><a href="#">2-Stroke</a></li>
-                                                    <li><a href="#">Handbag</a></li>
-                                                    <li><a href="#">Clothing</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu_item_children last_child"><a href="#">Wheel Simulators</a>
-                                                <ul class="categorie_sub_menu">
-                                                    <li><a href="#">Bags & Cases</a></li>
-                                                    <li><a href="#">Binoculars & Scopes</a></li>
-                                                    <li><a href="#">Film Photography</a></li>
-                                                    <li><a href="#">Lighting & Studio</a></li>
-                                                </ul>
-                                                <div class="categorie_banner">
-                                                    <a href="#"><img src="assets/img/bg/banner2.jpg" alt=""></a>
-                                                </div>
-                                            </li>
+                            {{-- <div class="categories_menu_toggle">
+                                    <ul>
+                                        <li class="menu_item_children categorie_list"><a href="#"> {{ $categorys->slug }}<i
+                                                    class="fa fa-angle-right"></i></a>
+                                            <ul class="categories_mega_menu">
 
-                                        </ul>
+
+                                        </li>
+
+                                        <li class="menu_item_children"><a href="#"> </a>
+                                            <ul class="categorie_sub_menu">
+                                                <li><a href="#">Accessories</a></li>
+                                                <li><a href="#">2-Stroke</a></li>
+                                                <li><a href="#">Handbag</a></li>
+                                                <li><a href="#">Clothing</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu_item_children last_child"><a href="#"> </a>
+                                            <ul class="categorie_sub_menu">
+                                                <li><a href="#">Bags & Cases</a></li>
+                                                <li><a href="#">Binoculars & Scopes</a></li>
+                                                <li><a href="#">Film Photography</a></li>
+                                                <li><a href="#">Lighting & Studio</a></li>
+                                            </ul>
+                                            <div class="categorie_banner">
+                                                <a href="#"><img src="assets/img/bg/banner2.jpg" alt=""></a>
+                                            </div>
+                                        </li>
+
+                                    </ul>
                                     </li>
-                                    <li class="menu_item_children"><a href="#"> Wheels & Tires <i
-                                                class="fa fa-angle-right"></i></a>
+                                    <li class="menu_item_children"><a href="#"> <i class="fa fa-angle-right"></i></a>
                                         <ul class="categories_mega_menu">
                                             <li class="menu_item_children"><a href="#">Dresses</a>
                                                 <div class="categorie_sub_menu">
@@ -189,14 +183,30 @@
                                     <li class="hidden"><a href="shop-left-sidebar.html">Sleight Sofas</a></li>
                                     <li><a href="#" id="more-btn"><i class="fa fa-plus" aria-hidden="true"></i> More
                                             Categories</a></li>
-                                </ul>
-                            </div>
+                                    </ul>
+                                </div> --}}
+
+                            @foreach ($category as $key => $categorys)
+                                <div class="categories_menu_toggle">
+                                    <ul>
+                                        <li class="menu_item_children categorie_list"><a href="#"> {{ $categorys->name }}<i
+                                                    class="fa fa-angle-right"></i></a>
+                                            {{-- <ul class="categories_mega_menu">
+                                            </ul> --}}
+
+
+                                        </li> {{-- @foreach ($categorys->subcategory as $key => $subcategory)<li class="menu_item_children"><a href="#">{{$subcategory->name }}</a></li> --}}
+
+                                    </ul>
+                            @endforeach
+
+
+
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-12">
                         <div class="slider_area owl-carousel">
-                            <div class="single_slider d-flex align-items-center"
-                                data-bgimg="assets/img/slider/slider1.jpg">
+                            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider1.jpg">
                                 <div class="slider_content">
                                     <h2>Top Quality</h2>
                                     <h1>Aftermarket Turbocharger Specialist</h1>
@@ -204,16 +214,14 @@
                                 </div>
 
                             </div>
-                            <div class="single_slider d-flex align-items-center"
-                                data-bgimg="assets/img/slider/slider2.jpg">
+                            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider2.jpg">
                                 <div class="slider_content">
                                     <h2>Height - Quality</h2>
                                     <h1>The Parts Of shock Absorbers & Brake Kit</h1>
                                     <a class="button" href="shop.html">shopping now</a>
                                 </div>
                             </div>
-                            <div class="single_slider d-flex align-items-center"
-                                data-bgimg="assets/img/slider/slider3.jpg">
+                            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider3.jpg">
                                 <div class="slider_content">
                                     <h2>Engine Oils</h2>
                                     <h1>Top Quality Oil For Every Vehicle</h1>
@@ -325,8 +333,8 @@
                                             <li class="quick_button"><a href="#" data-bs-toggle="modal"
                                                     data-bs-target="#modal_box" title="quick view"> <span
                                                         class="lnr lnr-magnifier"></span></a></li>
-                                            <li class="wishlist"><a href="wishlist.html"
-                                                    title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span
+                                                        class="lnr lnr-heart"></span></a></li>
                                             <li class="compare"><a href="compare.html" title="compare"><span
                                                         class="lnr lnr-sync"></span></a></li>
                                         </ul>
@@ -347,8 +355,7 @@
                                             <span class="regular_price">$180.00</span>
                                         </div>
                                         <div class="add_to_cart">
-                                            <a href="cart.html" title="add to cart"><span
-                                                    class="lnr lnr-cart"></span></a>
+                                            <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -372,8 +379,8 @@
                                             <li class="quick_button"><a href="#" data-bs-toggle="modal"
                                                     data-bs-target="#modal_box" title="quick view"> <span
                                                         class="lnr lnr-magnifier"></span></a></li>
-                                            <li class="wishlist"><a href="wishlist.html"
-                                                    title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span
+                                                        class="lnr lnr-heart"></span></a></li>
                                             <li class="compare"><a href="compare.html" title="compare"><span
                                                         class="lnr lnr-sync"></span></a></li>
                                         </ul>
