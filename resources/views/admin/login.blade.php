@@ -43,15 +43,15 @@
                         @csrf
                         <h1>Login Form</h1>
                         <div>
-                            <input type="text" name='username' class="form-control" placeholder="Username"
-                                value="{{ old('username') }}" />
+                            <input type="text" name='username' class="form-control"
+                                placeholder="Please Enter Your Username" value="{{ old('username') }}" />
                             @error('username')
                                 <span style="color: red">{{ $message }}</span><br>
                             @enderror
                         </div>
                         <div>
-                            <input type="password" name="password" class="form-control" placeholder="Password"
-                                value="{{ old('password') }}" />
+                            <input type="password" name="password" class="form-control"
+                                placeholder="Please Enter Your Password" value="{{ old('password') }}" />
                             @error('password')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror

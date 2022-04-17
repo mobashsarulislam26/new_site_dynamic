@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
+
 
 
 class CategoryController extends Controller
@@ -43,8 +42,14 @@ class CategoryController extends Controller
             'name' => 'required',
             'slug' => 'required',
             ]);
-            $input = $request->all();
-            Category::create($input);
+            $form_data = array(
+            'name'  =>  $request->name,
+            'slug'  =>  $request->slug,
+            );
+            Category::create($form_data);
+
+            // $input = $request->all();
+            // Category::create($input);
             return  back()
                      ->with('success','Item created successfully');
     }
@@ -66,10 +71,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        $category= Category::find($category);
-        return view('admin.editCategory', compact('category'));
+        $category = Category::find($id);
+        // dd($category);
+        return view('admin.editCategory',compact('category'));
     }
 
 
@@ -80,16 +86,17 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function Update(Request $request, Category $category)
+    public function Update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
             'slug' => 'required',
             ]);
+            $Category = Category::find($id);
             $input = $request->all();
-            $category->update($input);
-            return  back()
-                     ->with('success','Item updated successfully');
+            $Category->update($input);
+            return  redirect()->route('Category.index')
+                                    ->with('success','Item updated successfully');
     }
 
     /**
@@ -98,15 +105,19 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        try{
+            $category = Category::find($id);
+            $category->delete();
+            return back()->with('success','category deleted successfully');
+        }catch(\Exception $e){
+            return $e;
+            return back()->with('error','Error deletion');
+        }
+
     }
 
- public function editCategory(Category $category)
-    {
-        $category= Category::find($category);
-        return view('admin.editCategory', compact('category'));
-    }
+
 
 }

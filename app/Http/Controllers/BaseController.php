@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class BaseController extends Controller
 {
@@ -36,9 +37,13 @@ class BaseController extends Controller
     {
         return view('contact');
     }
-    public function productDetails()
+
+    public function productDetails($id)
     {
-        return view('productDetails');
+       $product = Product::find($id);
+       $category = Category::all();
+        return view('productDetails', compact('product','category'));
     }
+
 
 }

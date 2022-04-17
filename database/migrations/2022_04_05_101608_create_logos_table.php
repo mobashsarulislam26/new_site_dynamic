@@ -15,7 +15,8 @@ class CreateLogosTable extends Migration
     {
         Schema::create('logos', function (Blueprint $table) {
             $table->id();
-            $table->string('image_logo')->nullable();
+            $table->string('name');
+            $table->string('image_favicon');
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

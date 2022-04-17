@@ -4,9 +4,10 @@
         Edit Product</h2>
     {{-- {{ dd($product) }} --}}
 
-    <form action="{{ route('Product.edit', $product->id) }}" method="POST" enctype="multipart/form-data">
-        @method('post')
+    <form action="{{ route('Product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('put')
+
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">Product Name</label>
@@ -52,7 +53,7 @@
                     cols="50">  @if (old($product->description))
 {{ old($product->description) }}@else{{ $product->description }}
 @endif
-</textarea>
+        </textarea>
                 @error('description')
                     <span style="color: red">{{ $message }}</span>
                 @enderror
@@ -61,12 +62,12 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="address">Sales Price</label>
+                <label for="sale_price">Sales Price</label>
                 @error('sale_price')
                     <div class="alert alert-danger" role="alert">{{ $message }}</div>
                 @enderror
                 <input type="text" class="form-control" name="sale_price" id="sale_price"
-                    value="{{ old('sale_price') }}" placeholder="Enter sales price">
+                    value="@if (old('sale_price')) {{ old('sale_price') }} @else {{ $product->sale_price }} @endif ">
             </div>
             <div class="col-md-6">
                 <label for="status">Stock Status</label><br>
@@ -96,11 +97,10 @@
                 <select class="form-control" id="item" name='category_id'>
                     <option value="">Select Category</option>
                     @foreach ($category as $categorys)
-                        @if (old('category_id') == $categorys->id)
-                            <option value="{{ $categorys->id }}" {{ 'selected' }}>{{ $categorys->name }}</option>
-                        @else
-                            <option value="{{ $categorys->id }}">{{ $categorys->name }}</option>
-                        @endif
+                        <option value="{{ $categorys->id }}"
+                            {{ $product->category_id == $categorys->id ? 'selected' : '' }}>
+                            {{ $product->Category->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>

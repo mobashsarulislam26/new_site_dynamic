@@ -19,7 +19,7 @@ class LogoController extends Controller
     public function index()
     {
         $logos = Logo::all();
-        return view('admin.logo.logo', compact('logos'));
+        return view('admin.logo.showLogo', compact('logos'));
     }
 
     /**
@@ -40,29 +40,26 @@ class LogoController extends Controller
      */
     public function store(Request $request)
     {
-        //    dd($request);
-        // $data= new Logo();
+       $request->validate([
+            'name' => 'required',
+            'image_favicon' => 'required',
 
-        // if($request->file('assets/img')){
-        //     $file= $request->file('assets/img');
-        //     $filename= date('YmdHi').$file->getClientOriginalName();
-        //     $file-> move(public_path('public/assets/img'), $filename);
-        //     $data['assets/img']= $filename;
-        // }
-        // $data->save();
-        //  $input = $request->input;
-        //    if($input !==null){
-        //        $fileext=$input->getClientOriginalExtension();
-        //        $input->storeAs('assets/img/logo/'. $organization_name, "logo.{$fileext}");
-        //    }
-        // if ($image = $request->file('image')) {
-        //     $destinationPath = 'assets/img/logo/';
-        //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     $image->move($destinationPath, $profileImage);
-        //     $input['image'] = "$profileImage";
-        // }
+            //  'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-        // Logo::save($input);
+
+         $input = $request->all();
+
+        if ($image = $request->file('image_favicon')) {
+            $destinationPath = 'assets/img/logo/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image_favicon'] = "$profileImage";
+        }
+
+        logo::create($input);
+        return  redirect()->route('Logo.index')
+                    ->with('success','Item created successfully');
 
     }
 
@@ -106,8 +103,12 @@ class LogoController extends Controller
      * @param  \App\Models\Logo  $logo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Logo $logo)
+    public function destroy($id)
     {
-        //
+        $logo = Logo::find($id);
+        $logo->delete();
+        return redirect()->route('Logo.index')
+                        ->with('success','Item deleted successfully');
     }
+
 }

@@ -1,6 +1,10 @@
 @extends('admin.layouts')
 @section('content')
     <h2>Add Product</h2>
+    <div class='row'>
+        <a href="{{ route('Product.index') }}" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i> View Product
+        </a>
 
     <form action="{{ route('Product.store') }}" method="post" enctype="multipart/form-data">
         @csrf

@@ -1,7 +1,11 @@
 @extends('admin.layouts')
 @section('content')
     <h2>Add Category</h2>
-    <div class='row'></div>
+    <div class='row'>
+        <a href="{{ route('Category.index') }}" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i> View Category
+        </a>
+    </div>
     <form action="{{ route('Category.store') }}" method='post'>
         @csrf
         <div class="form-row">

@@ -71,7 +71,9 @@
                                         <li><a href="">Blog</a></li>
                                         <li><a href="">ABOUT US</a></li>
                                         <li><a href="">CONTACT US</a></li>
-                                        <li><a href="{{ route('Logo.index') }}">Add Logo</a></li>
+                                        <li><a href="{{ route('Logo.create') }}">Add Logo</a></li>
+                                        <li><a href="{{ route('Logo.index') }}">Show Logo</a></li>
+
                                         <li><a href="{{ route('Product.index') }}">Show Product</a></li>
                                         <li><a href="{{ route('Product.create') }}"> add Product</a></li>
                                         <li><a href="{{ route('Category.create') }}"> add Category</a></li>

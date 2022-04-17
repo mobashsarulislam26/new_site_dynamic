@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    <h3>Product Details</h3>
+
 @endsection
 @section('content')
     <div class="breadcrumbs_area">
@@ -28,9 +28,10 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product-details-tab">
 
+
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="assets/img/product/product15.jpg"
+                                <img id="zoom1" src="assets/img/product/{{ $product->image }}"
                                     data-zoom-image="assets/img/product/product15.jpg" alt="big-1">
                             </a>
                         </div>
@@ -77,13 +78,13 @@
                     <div class="product_d_right">
                         <form action="#">
 
-                            <h1>Nonstick Dishwasher PFOA</h1>
+                            <h1>{{ $product->name }}</h1>
                             <div class="product_nav">
                                 <ul>
-                                    <li class="prev"><a href="product-details.html"><i
+                                    <li class="prev"><a href=" "><i
                                                 class="fa fa-angle-left"></i></a>
                                     </li>
-                                    <li class="next"><a href="variable-product.html"><i
+                                    <li class="next"><a href=" "><i
                                                 class="fa fa-angle-right"></i></a></li>
                                 </ul>
                             </div>
@@ -99,8 +100,8 @@
 
                             </div>
                             <div class="price_box">
-                                <span class="current_price">$70.00</span>
-                                <span class="old_price">$80.00</span>
+                                <span class="current_price">${{ $product->sale_price }}</span>
+                                <span class="old_price">${{ $product->sale_price }}</span>
 
                             </div>
                             <div class="product_desc">
@@ -136,9 +137,10 @@
                                 </ul>
                             </div>
                             <div class="product_meta">
-                                <span>Category: <a href="#">Clothing</a></span>
+                                <span>Category: <a href="#">{{$product->Category->name}}</a></span>
                             </div>
 
+                            @endforeach
                         </form>
                         <div class="priduct_social">
                             <ul>
