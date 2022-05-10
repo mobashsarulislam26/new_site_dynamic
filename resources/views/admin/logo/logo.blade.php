@@ -1,6 +1,7 @@
 @extends('admin.layouts')
 @section('content')
-    <h2>Logo Add Page</h2>
+    <a href="{{ route('Logo.index') }}" class="btn btn-primary">
+        <i class="fa fa-plus" aria-hidden="true"></i> View Logo</a>
     <div class='container'>
         <div class="row">
             <form action="{{ route('Logo.store') }}" method="post" enctype="multipart/form-data">

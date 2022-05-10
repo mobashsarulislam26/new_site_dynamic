@@ -61,7 +61,7 @@
 
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="sale_price">Sales Price</label>
                 @error('sale_price')
                     <div class="alert alert-danger" role="alert">{{ $message }}</div>
@@ -69,7 +69,15 @@
                 <input type="text" class="form-control" name="sale_price" id="sale_price"
                     value="@if (old('sale_price')) {{ old('sale_price') }} @else {{ $product->sale_price }} @endif ">
             </div>
-            <div class="col-md-6">
+            <div class="form-group col-md-4">
+                <label for="address">Old Price</label>
+                @error('old_price')
+                    <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                @enderror
+                <input type="text" class="form-control" name="old_price" id="sale_price"
+                    value="@if (old('old_price')) {{ old('old_price') }} @else {{ $product->old_price }} @endif ">
+            </div>
+            <div class="col-md-4">
                 <label for="status">Stock Status</label><br>
                 @error('stockStatus')
                     <div class="alert alert-danger" role="alert">{{ $message }}</div>

@@ -20,10 +20,12 @@ class CreateProductsTable extends Migration
             $table->string('short_description')->nullable();
             $table->string('description');
             $table->decimal('sale_price')->nullable();
+            $table->decimal('old_price')->nullable();
             $table->enum('stockStatus',['in_stock','out_of_stock'])->default('in_stock');
             $table->string('image');
             $table->string('images')->nullable();
             $table->bigInteger('category_id')->unsigned()->nullable();
+            $table->string('view')->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 

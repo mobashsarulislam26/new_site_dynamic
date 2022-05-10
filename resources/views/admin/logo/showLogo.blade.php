@@ -8,6 +8,8 @@
                     <div class="card-header">
                         <h3 class="card-title">Logo List</h3>
                     </div>
+                    <a href="{{ route('Logo.create') }}" class="btn btn-primary">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Add New Logo</a>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">

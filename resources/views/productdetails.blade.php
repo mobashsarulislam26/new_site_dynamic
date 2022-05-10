@@ -1,7 +1,6 @@
-@extends('master')
-@section('title')
+@include('master')
 
-@endsection
+
 @section('content')
     <div class="breadcrumbs_area">
         <div class="container">
@@ -10,7 +9,7 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="index.html">home</a></li>
-                            <li><a href="shop.html">shop</a></li>
+                            <li><a href="shop.html">Product</a></li>
                             <li><a href="shop.html">Clothing</a></li>
                             <li>product details</li>
                         </ul>
@@ -19,6 +18,8 @@
             </div>
         </div>
     </div>
+
+    {{ dd($product) }};
     <!--breadcrumbs area end-->
 
     <!--product details start-->
@@ -31,8 +32,10 @@
 
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="assets/img/product/{{ $product->image }}"
-                                    data-zoom-image="assets/img/product/product15.jpg" alt="big-1">
+                                {{ $product->image }}
+                                <img id="zoom1" src="{{ asset('assets/img/product/' . $product->image) }} "
+                                    data-zoom-image="{{ asset('assets/img/product/' . $product->image) }}" alt="big-1">
+
                             </a>
                         </div>
 
@@ -77,15 +80,13 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product_d_right">
                         <form action="#">
-
-                            <h1>{{ $product->name }}</h1>
+                            {{-- {{ $product->name }} --}}
+                            <h1>{{$product->name}}</h1>
                             <div class="product_nav">
                                 <ul>
-                                    <li class="prev"><a href=" "><i
-                                                class="fa fa-angle-left"></i></a>
+                                    <li class="prev"><a href=" "><i class="fa fa-angle-left"></i></a>
                                     </li>
-                                    <li class="next"><a href=" "><i
-                                                class="fa fa-angle-right"></i></a></li>
+                                    <li class="next"><a href=" "><i class="fa fa-angle-right"></i></a></li>
                                 </ul>
                             </div>
                             <div class=" product_ratting">
@@ -100,19 +101,15 @@
 
                             </div>
                             <div class="price_box">
-                                <span class="current_price">${{ $product->sale_price }}</span>
-                                <span class="old_price">${{ $product->sale_price }}</span>
+                                {{-- {{ $product->sale_price }} --}}
+                                {{-- {{ $product->old_price }} --}}
+                                <span class="current_price">${{$product->sale_price}}</span>
+                                <span class="old_price">${{$product->old_price}}</span>
 
                             </div>
                             <div class="product_desc">
-                                <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget
-                                    sagittis
-                                    vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum
-                                    dolor
-                                    sit
-                                    amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi
-                                    posuere
-                                    nisl, in </p>
+                                {{-- {{ $product->description }} --}}
+                                <p>{{$product->description}}</p>
                             </div>
                             <div class="product_variant color">
                                 <h3>Available Options</h3>
@@ -137,11 +134,14 @@
                                 </ul>
                             </div>
                             <div class="product_meta">
-                                <span>Category: <a href="#">{{$product->Category->name}}</a></span>
+                                {{-- {{ $product->Category->name }} --}}
+                                <span>Category: {{$product->Category->name}}<a href="#"></a></span>
                             </div>
 
-                            @endforeach
+
                         </form>
+                    </div>
+                    <div class="product_meta">
                         <div class="priduct_social">
                             <ul>
                                 <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i>
@@ -188,23 +188,9 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="info" role="tabpanel">
                                     <div class="product_info_content">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec
-                                            est
-                                            tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus
-                                            quis
-                                            justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit
-                                            id
-                                            nulla.</p>
-                                        <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis
-                                            fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa
-                                            massa.
-                                            Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed
-                                            commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing
-                                            elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in
-                                            accumsan
-                                            elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc.
-                                            Etiam
-                                            gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
+                                        <p>
+                                            {{-- {{ $product->description }} --}}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="sheet" role="tabpanel">
@@ -229,16 +215,8 @@
                                         </form>
                                     </div>
                                     <div class="product_info_content">
-                                        <p>Fashion has been creating well-designed collections since 2010. The brand offers
-                                            feminine designs delivering stylish separates and statement dresses which have
-                                            since
-                                            evolved into a full ready-to-wear collection in which every item is a vital part
-                                            of
-                                            a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance
-                                            and
-                                            unmistakable signature style. All the beautiful pieces are made in Italy and
-                                            manufactured with the greatest attention. Now Fashion extends to a range of
-                                            accessories including shoes, hats, belts and more!</p>
+                                        {{-- {{ $product->short_description }} --}}
+                                        <p></p>
                                     </div>
                                 </div>
 
@@ -308,4 +286,6 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+    <!-- product_details_area_end  -->
+@endsection

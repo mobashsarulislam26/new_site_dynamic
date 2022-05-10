@@ -67,17 +67,17 @@
                                 <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="">Home</a></li>
-                                        <li><a href="">SHOP</a></li>
-                                        <li><a href="">Blog</a></li>
-                                        <li><a href="">ABOUT US</a></li>
-                                        <li><a href="">CONTACT US</a></li>
-                                        <li><a href="{{ route('Logo.create') }}">Add Logo</a></li>
+                                        <li><a href="">Shop</a></li>
+                                        <li><a href="">About Us</a></li>
+                                        <li><a href="">Contact Us</a></li>
                                         <li><a href="{{ route('Logo.index') }}">Show Logo</a></li>
-
                                         <li><a href="{{ route('Product.index') }}">Show Product</a></li>
-                                        <li><a href="{{ route('Product.create') }}"> add Product</a></li>
-                                        <li><a href="{{ route('Category.create') }}"> add Category</a></li>
-                                        <li><a href="{{ route('Category.index') }}"> Show Category</a></li>
+                                        {{-- <li><a href="{{ route('Product.create') }}">Add Product</a></li>
+                                        <li><a href="{{ route('Category.create') }}">Add Category</a></li> --}}
+                                        <li><a href="{{ route('Category.index') }}">Show Category</a></li>
+                                        <li><a href="{{ route('cover.index') }}">Product Page Cover</a></li>
+                                        <li><a href="{{ route('slider.index') }}">Slider</a></li>
+
 
                                     </ul>
                                 </li>

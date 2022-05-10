@@ -44,4 +44,10 @@
                                     </form>
                                 </td>
                         @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+     
                     @endsection

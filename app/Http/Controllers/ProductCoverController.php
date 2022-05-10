@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Logo;
-use App\Models\admin;
-use Illuminate\Http\UploadedFile;
-use App\Http\Requests\StoreLogoRequest;
-use App\Http\Requests\UpdateLogoRequest;
-// use Illuminate\Foundation\Http\FormRequest;
+use App\Models\ProductCover;
 use Illuminate\Http\Request;
-class LogoController extends Controller
+// use App\Http\Requests\UpdateProductCoverRequest;
+
+class ProductCoverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +15,8 @@ class LogoController extends Controller
      */
     public function index()
     {
-        $logos = Logo::all();
-        return view('admin.logo.showLogo', compact('logos'));
+        $productCover = ProductCover::all();
+        return view('admin.productCover.showCover', compact('productCover'));
     }
 
     /**
@@ -29,36 +26,35 @@ class LogoController extends Controller
      */
     public function create()
     {
-        return view( 'admin.logo.logo');
+        return view('admin.productCover.addCover');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreLogoRequest  $request
+     * @param  \App\Http\Requests\StoreProductCoverRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-       $request->validate([
-            'name' => 'required',
-            'image_favicon' => 'required',
+$request->validate([
 
-            //  'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
 
          $input = $request->all();
 
-        if ($image = $request->file('image_favicon')) {
-            $destinationPath = 'assets/img/logo/';
+        if ($image = $request->file('image')) {
+            $destinationPath = 'assets/img/cover/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['image_favicon'] = "$profileImage";
+            $input['image'] = "$profileImage";
         }
 
-        logo::create($input);
-        return  redirect()->route('Logo.index')
+        ProductCover::create($input);
+        return  redirect()->route('cover.index')
                     ->with('success','Item created successfully');
 
     }
@@ -66,22 +62,21 @@ class LogoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\ProductCover  $productCover
      * @return \Illuminate\Http\Response
      */
-    public function show(Logo $logo)
+    public function show(ProductCover $productCover)
     {
-    //    $logo=Logo::get();
-    //     return view('master', compact('logo'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\ProductCover  $productCover
      * @return \Illuminate\Http\Response
      */
-    public function edit(Logo $logo)
+    public function edit(ProductCover $productCover)
     {
         //
     }
@@ -89,27 +84,26 @@ class LogoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateLogoRequest  $request
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Http\Requests\UpdateProductCoverRequest  $request
+     * @param  \App\Models\ProductCover  $productCover
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLogoRequest $request, Logo $logo)
+    public function update(Request $request, ProductCover $productCover)
     {
-        //
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\ProductCover  $productCover
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $logo = Logo::find($id);
-        $logo->delete();
-        return redirect()->route('Logo.index')
+        $productCover = ProductCover::find($id);
+        $productCover->delete();
+        return redirect()->route('cover.index')
                         ->with('success','Item deleted successfully');
     }
-
 }

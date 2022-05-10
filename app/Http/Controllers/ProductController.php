@@ -64,6 +64,13 @@ class ProductController extends Controller
                     ->with('success','Item created successfully');
     }
 
+    // }else{
+    //         ($images = $request->file('images')) {
+    //         $destinationPaths = 'assets/img/product/';
+    //         $profileImages = date('YmdHis') . "." . $images->getClientOriginalExtension();
+    //         $images->move($destinationPaths, $profileImages);
+    //         $input['images'] = "$profileImages";
+
 
 
     /**
@@ -72,10 +79,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     $product = Product::find($id);
+    //    $category = Category::all();
+    //     return view('productDetails', compact('product','category'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -117,6 +126,7 @@ class ProductController extends Controller
            try{
                 $product = Product::find($id);
                 $input = $request->all();
+                
                 $product->update($input);
                 return  redirect()->route('Product.index')
                 ->with('success','Item updated successfully');
@@ -143,6 +153,7 @@ class ProductController extends Controller
             return back()->with('error','Error deletion');
         }
     }
+
 }
 
 
